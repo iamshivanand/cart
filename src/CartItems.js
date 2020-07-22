@@ -2,15 +2,15 @@ import React from 'react';
 
 class CartItem extends React.Component{
     //adding the state
-    constructor () {
-        //we need to also call superclass as we extends from super class react.components
-        super();
-        this.state = {
-            price: 999,
-            tittle: 'Phone',
-            Qty:1,
-            img:''
-        }
+    // constructor () {
+    //     //we need to also call superclass as we extends from super class react.components
+    //     super();
+    //     this.state = {
+    //         price: 999,
+    //         tittle: 'Phone',
+    //         Qty:1,
+    //         img:''
+    //     }
         // this.increaseQuantity= this.increaseQuantity.bind(this)
         //this is the another way of binding the this so that this should not be undefined
         //but this might also get pretty messy so instead we use arrow function as arrow function themself bind  this 
@@ -19,7 +19,7 @@ class CartItem extends React.Component{
             //in some cases like when we are making ajax call or if we are using promises so inside these react wont do 
             //batching for us  state call will act like syncronus call 
             // this.testing();
-    }
+    // }
     // testing(){
     //     const promise= new Promise((resolve, reject) => {
     //         setTimeout(() => {
@@ -93,7 +93,7 @@ class CartItem extends React.Component{
         console.log("Delete");
     }
     render(){
-        const {price, tittle, Qty }= this.state;
+        const {price, tittle, Qty }= this.props.product;
         return(
             <div className="cart-item">
                 <div className="left-block">
