@@ -37,6 +37,43 @@ class Cart extends React.Component{
             ]
         }
     }
+    handleIncreaseQuantity= (product)=>{
+        console.log('Hey please increase the quantity ');
+        console.log(product);
+        const {products}=this.state;
+        const index= products.indexOf(product);
+
+        products[index].Qty+=1;
+
+        this.setState({
+            // products: products
+            //as name of both the above variables are same so we
+            // use shorthand given below
+            products
+        });
+    }
+    handleDecreaseQuantity= (product) =>{
+        const {products}= this.state;
+        const index= products.indexOf(product);
+
+        if(products[index].Qty===1){
+            return;
+        }
+        products[index].Qty-=1;
+
+        this.setState({
+            products
+        });
+    }
+    handleDeleteProduct= (id) =>{
+        const {products}= this.state;
+
+        const items= products.filter((item) => item.id !== id); //this will return the arrray of the products whose id doesnot match 
+
+        this.setState({
+            products:items
+        });
+    }
 render(){
     const {products}= this.state;
     return(
@@ -46,6 +83,9 @@ render(){
               <CartItem 
                 product= {product} 
                 key={product.id}
+                increaseQuantity= {this.handleIncreaseQuantity}
+                decreaseQuantity= {this.handleDecreaseQuantity}
+                deleteProduct= {this.handleDeleteProduct}
                 //we can basically pass anytting over here
                 //like
                 // func={() => console.log('this is a function passed as prop')}
