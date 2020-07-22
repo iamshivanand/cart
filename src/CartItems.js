@@ -1,6 +1,6 @@
 import React from 'react';
 
-class cartItem extends React.Component{
+class CartItem extends React.Component{
     //adding the state
     constructor () {
         //we need to also call superclass as we extends from super class react.components
@@ -145,4 +145,4 @@ const styles= {
         backgroundColor:'grey'
     }
 }
-export default cartItem;
+export default CartItem;
