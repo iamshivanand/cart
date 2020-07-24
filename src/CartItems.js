@@ -1,53 +1,52 @@
 import React from 'react';
 
-class CartItem extends React.Component{
-    //all the details related to state is shifted below in the form of comment
-    render(){
-        const {price, tittle, Qty }= this.props.product;
-        const {product,increaseQuantity,decreaseQuantity,deleteProduct}= this.props;
-        return(
-            <div className="cart-item">
-                <div className="left-block">
-                    <img style={styles.image} />
-                  
-                </div>
-                <div className="right-block">
-                    <div style={{fontFamily:"cursive", fontSize:20}}>{tittle}</div>
-                    <div>RS {price}</div>
-                    <div>Qty : {Qty}</div>
-                    <div className="cart-item-actions">
-                        {/* Buttons */}
-                        <img
-                            alt="increase" 
-                            className="action-icons" 
-                            src="https://image.flaticon.com/icons/svg/864/864378.svg" 
-                            onClick={() => increaseQuantity(product)}
-                            // onClick={this.increaseQuantity.bind(this)}
-                            //we use bind because otherwise when we are calling increaseQuantity the value of this is lost 
-                            //so we need to bind the value of this wit the function otherwise it will through an error as this is not defined
-                            //instead of binding over over here we can aslo bind it in constructor when there are multiple event handlers
+const CartItem= (props) => {
+//all the details related to state is shifted below in the form of comment
+    const {price, tittle, Qty }= props.product;
+    const {product,increaseQuantity,decreaseQuantity,deleteProduct}= props;
+    return(
+        <div className="cart-item">
+            <div className="left-block">
+                <img style={styles.image} src={product.img}/>
+                
+            </div>
+            <div className="right-block">
+                <div style={{fontFamily:"cursive", fontSize:20}}>{tittle}</div>
+                <div>RS {price}</div>
+                <div>Qty : {Qty}</div>
+                <div className="cart-item-actions">
+                    {/* Buttons */}
+                    <img
+                        alt="increase" 
+                        className="action-icons" 
+                        src="https://image.flaticon.com/icons/svg/864/864378.svg" 
+                        onClick={() => increaseQuantity(product)}
+                        // onClick={this.increaseQuantity.bind(this)}
+                        //we use bind because otherwise when we are calling increaseQuantity the value of this is lost 
+                        //so we need to bind the value of this wit the function otherwise it will through an error as this is not defined
+                        //instead of binding over over here we can aslo bind it in constructor when there are multiple event handlers
 
 
-                        />
-                        <img 
-                            alt="decrease" 
-                            className="action-icons" 
-                            src="https://image.flaticon.com/icons/svg/972/972575.svg" 
-                            onClick= {() => decreaseQuantity(product)}
-                        />
-                        <img 
-                            alt="delete"
-                            className="action-icons"
-                            src="https://image.flaticon.com/icons/svg/3096/3096687.svg" 
-                            onClick= {() => deleteProduct(product.id)}
-                        />
+                    />
+                    <img 
+                        alt="decrease" 
+                        className="action-icons" 
+                        src="https://image.flaticon.com/icons/svg/972/972575.svg" 
+                        onClick= {() => decreaseQuantity(product)}
+                    />
+                    <img 
+                        alt="delete"
+                        className="action-icons"
+                        src="https://image.flaticon.com/icons/svg/3096/3096687.svg" 
+                        onClick= {() => deleteProduct(product.id)}
+                    />
 
-                    </div>
                 </div>
             </div>
-        );
-    }
+        </div>
+    );
 }
+
 const styles= {
     image: {
         height:110,
