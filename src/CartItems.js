@@ -34,7 +34,7 @@ const CartItem= (props) => {
                         src="https://image.flaticon.com/icons/svg/972/972575.svg" 
                         onClick= {() => decreaseQuantity(product)}
                     />
-                    <img 
+                    <img
                         alt="delete"
                         className="action-icons"
                         src="https://image.flaticon.com/icons/svg/3096/3096687.svg" 
